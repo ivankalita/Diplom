@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+</head>
+<body>
+    <style>
+        div.ShowOrHide {
+            display: none;
+        }
+    </style>
+<input type="radio" class="ShowOrHide"  value="1" onclick="foo(this)"/>
+<hr />
+<input type="checkbox" class="ShowOrHide" value="myDivId1" />1 div
+<input type="checkbox" class="ShowOrHide" value="myDivId2" />2 div
+<input type="checkbox" class="ShowOrHide" value="myDivId3" />3 div
+<hr />
+  
+<div id="myDivId1" class="ShowOrHide">div #1 content</div>
+<div id="myDivId2" class="ShowOrHide">div #2 content</div>
+<div id="myDivId3" class="ShowOrHide">div #3 content</div>
+
+
+
+<script type="text/javascript">
+    var a,b;
+    function foo(c) {
+        if (a != c) {
+            b = 0;
+            a = c
+            $('input.ShowOrHide').click(function() {
+ 
+                var checked = $("input.ShowOrHide:checked");
+
+                    if ( checked.length == 0 ) {
+                        $("div.ShowOrHide").show();
+                        } else {
+                            $("div.ShowOrHide").hide();
+                            checked.each(function() {
+                                $( 'div#' + $(this).val() ).show();
+                             });
+                         }
+                    });
+        } else {
+        b ^= 1;
+        c.checked = b
+        };
+    };
+    </script>
+    
+
+    

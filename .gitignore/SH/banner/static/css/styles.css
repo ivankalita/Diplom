@@ -1,0 +1,43 @@
+div.country {
+    display: none;
+}
+.show_country:checked~div.country {
+    display: block;
+}
+
+div.city {
+    display: none;
+}
+.show_city:checked~div.city {
+    display: block;
+}
+
+div.os {
+    display: none;
+}
+.show_os:checked~div.os {
+    display: block;
+}
+
+div.port {
+    display: none;
+}
+.show_port:checked~div.port {
+    display: block;
+}
+
+/*========== FILTER =========*/
+div.filter {
+    display: flex;
+}
+
+/*========== Table ==========*/
+table {
+    border-collapse: separate;
+    border-spacing: 50px 0;
+    margin: 10px 0;
+
+}
+.mytable td, .mytable th {
+    vertical-align: middle;
+}

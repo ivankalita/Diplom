@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shodan Research</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type='text/css'>
+</head>
+<body>
+    <a href="{% url 'home' %}">Return to HOME</a>
+
+        <table>
+            {% for record in results %}
+            <tr><th>{{ forloop.counter }}</th><td>IP:</td><td><a href="view/{{record.id}}">{{ record.ip }}</a></td></tr>
+            <style>
+                th {
+                    text-align: right;
+                }
+                tr:first-child {
+                    padding-left: 10px;
+                }
+            </style>
+            {% endfor %}    
+        </table>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Shodan Research</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Shodan</h1>
+    <form action="test" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="main_search" class="main_search"> 
+        <input type="submit" value="Send">           
+        <fieldset class = 'border_of_form'>  
+            <legend>Filter settings: </legend>  
+            <div class="filter">
+                <input type="checkbox" class='show_country' name="country" value='country'>Country:
+                <div class="country">
+                    <input type="radio" name="group_country" value="RU">Russia
+                    <input type="radio" name="group_country" value="US">USA
+                    <input type="radio" name="group_country" value="CN">China
+                </div>
+
+                <input type="checkbox" class='show_city' name="country" value='country'>City:
+                <div class="city">
+                    <input type="radio" name="group_city" value="Msc">Moscow
+                    <input type="radio" name="group_city" value="WA">Washington
+                    <input type="radio" name="group_city" value="PEK">Pekin
+                </div>
+
+                <input type="checkbox" class='show_os' name="country" value='country'>OS:
+                <div class="os">
+                    <input type="radio" name="group_os" value="UNIX">UNIX
+                    <input type="radio" name="group_os" value="BSD">BSD
+                    <input type="radio" name="group_os" value="Linux">Linux
+                    <input type="radio" name="group_os" value="Windows">Windows
+                    <input type="radio" name="group_os" value="IOS">IOS
+                    <input type="radio" name="group_os" value="ANDROID">ANDROID
+                </div>
+
+                <input type="checkbox" class='show_port' name="country" value='country'>Port:
+                <div class="port">
+                    <input type="radio" name="group_port" value="ftp">21
+                    <input type="radio" name="group_port" value="ssh">22
+                    <input type="radio" name="group_port" value="http">80
+                    <input type="radio" name="group_port" value="https">443
+                    <input type="radio" name="group_port" value="kerberos">464
+                </div>
+            </div>
+            <input type="submit" value="Send">
+            <input type="button" id="clearform" value="Reset">
+            <script>
+            $("#clearform").on('click', function() {
+                var temp = this.form.main_search.value;
+                $("form").trigger("reset");
+                $("input[name='main_search']").val(temp)
+            });
+            </script>
+        </fieldset>
+    </form>
+
+    <a href="{% url 'home' %}">Return to HOME</a><br>
+</body>
+</html>

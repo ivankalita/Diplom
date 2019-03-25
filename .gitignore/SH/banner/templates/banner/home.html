@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'banner_list' %}">Simple Search</a>
+    </li>
+    <li>
+      <a href="{% url 'model_form_upload' %}">Load File</a>
+    </li>
+    <li>
+      <a href="{% url 'simple_upload' %}">Parce output Nmap - XML</a>
+    </li>
+    <li>
+      <a href="{% url 'view_list' %}">View List</a>
+    </li>
+    <li>
+      <a href="{% url 'graph' %}">Graph</a>
+    </li>
+  </ul>
+  <!--
+  <p>Uploaded files:</p>
+  <ol>
+    {% for obj in documents %}
+      <li>
+        <tr><td><a href="{{ obj.document.url }}">{{ obj.document.name }}</a></td> | 
+            <td><a href="download/{{obj.id}}">Download</a></td> /
+            <td><a href="delete/{{obj.id}}">Delete</a></td>
+        </tr>
+        <small class="form-text text-muted">(Uploaded at: {{ obj.uploaded_at }})</small>
+      </li>
+    {% endfor %}
+  </ol>
+-->
+  <p>Download Proofs:</p>
+  <ol>
+      {% for proof in proofs %}
+        <li>
+          <tr><td><a href="{{ proof.id }}">{{ proof }}</a></td> | 
+              <td><a href="download/{{proof.id}}">Download</a></td> /
+              <td><a href="delete/{{proof.id}}">Delete</a></td>
+          </tr>
+          <small class="form-text text-muted">(Uploaded at: {{ proof.uploaded_at }})</small>
+        </li>
+      {% endfor %}
+    </ol>
+{% endblock %}
